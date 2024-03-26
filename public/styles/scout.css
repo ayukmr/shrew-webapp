@@ -1,0 +1,40 @@
+#scout {
+  height: 100%;
+}
+
+#scout #continue {
+  float: right;
+  margin: 8px 0 8px 8px;
+}
+
+#scout #points {
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.5rem;
+}
+
+#scout #points .buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#scout #points .buttons .group {
+  margin: 4px;
+}
+
+#scout #points .buttons button {
+  font-size: inherit;
+  padding: 10px 12px;
+  min-width: 100px;
+  height: 100px;
+}
+
+#scout #points #team {
+  margin: -100px 0;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+}

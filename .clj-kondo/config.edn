@@ -1,0 +1,2 @@
+{:lint-as {rum.core/defc           clj-kondo.lint-as/def-catch-all
+           secretary.core/defroute clj-kondo.lint-as/def-catch-all}}

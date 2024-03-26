@@ -1,0 +1,12 @@
+# macos
+.DS_Store
+
+# clojure
+/.clj-kondo/.cache/
+/.lsp/
+
+# leiningen
+.nrepl-port
+.lein-repl-history
+/target/
+/public/build/
