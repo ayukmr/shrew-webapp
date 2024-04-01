@@ -11,5 +11,5 @@
   :cljsbuild {:builds [{:source-paths ["src"]
                         :compiler {:output-to  "public/build/main.js"
                                    :output-dir "public/build"
-                                   :optimizations :none
-                                   :source-map true}}]})
+                                   :optimizations :simple
+                                   :source-map "public/build/main.js.map"}}]})
