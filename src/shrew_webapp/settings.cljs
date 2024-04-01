@@ -7,6 +7,21 @@
 
 (def !settings (atom {}))
 
+(defn submit [event]
+  (.preventDefault event)
+  (let [data (->> (.getElementById js/document "form")
+                  (js/FormData.)
+                  (.fromEntries js/Object))
+        event     (.-event     data)
+        points    (.-points    data)
+        questions (.-questions data)]
+    (request/post "/settings"
+                  {:event     event
+                   :points    (string/split points ",")
+                   :questions (string/split questions ",")}
+                  (cookies/get "admin"))
+    (link/navigate "/")))
+
 (defc view < rum/reactive []
   (request/get "/settings"
                (cookies/get "scout")
@@ -36,18 +51,3 @@
                                                     (:questions)
                                                     (string/join ","))}]
                         [:input {:value "Save" :type "submit" :on-click submit}]]]])
-
-(defn submit [event]
-  (.preventDefault event)
-  (let [data (->> (.getElementById js/document "form")
-                  (js/FormData.)
-                  (.fromEntries js/Object))
-        event     (.-event     data)
-        points    (.-points    data)
-        questions (.-questions data)]
-    (request/post "/settings"
-                  {:event     event
-                   :points    (string/split points ",")
-                   :questions (string/split questions ",")}
-                  (cookies/get "admin"))
-    (link/navigate "/")))
