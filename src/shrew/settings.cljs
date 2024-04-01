@@ -1,6 +1,6 @@
-(ns shrew-webapp.settings
-  (:require [shrew-webapp.request :as request]
-            [shrew-webapp.link :as link]
+(ns shrew.settings
+  (:require [shrew.request :as request]
+            [shrew.link :as link]
             [rum.core :refer [defc] :as rum]
             [reagent.cookies :as cookies]
             [clojure.string :as string]))

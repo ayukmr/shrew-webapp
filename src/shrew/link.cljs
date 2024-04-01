@@ -1,4 +1,4 @@
-(ns shrew-webapp.link
+(ns shrew.link
   (:require [rum.core :refer [defc] :as rum]
             [secretary.core :as secretary]))
 

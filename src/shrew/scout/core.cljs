@@ -1,8 +1,8 @@
-(ns shrew-webapp.scout.core
-  (:require [shrew-webapp.scout.info :as info]
-            [shrew-webapp.scout.points :as points]
-            [shrew-webapp.scout.responses :as responses]
-            [shrew-webapp.request :as request]
+(ns shrew.scout.core
+  (:require [shrew.scout.info :as info]
+            [shrew.scout.points :as points]
+            [shrew.scout.responses :as responses]
+            [shrew.request :as request]
             [rum.core :refer [defc] :as rum]
             [reagent.cookies :as cookies]))
 

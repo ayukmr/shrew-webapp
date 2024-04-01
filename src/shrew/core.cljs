@@ -1,10 +1,10 @@
-(ns shrew-webapp.core
-  (:require [shrew-webapp.home :as home]
-            [shrew-webapp.auth :as auth]
-            [shrew-webapp.scout.core :as scout]
-            [shrew-webapp.points :as points]
-            [shrew-webapp.responses :as responses]
-            [shrew-webapp.settings :as settings]
+(ns shrew.core
+  (:require [shrew.home :as home]
+            [shrew.auth :as auth]
+            [shrew.scout.core :as scout]
+            [shrew.points :as points]
+            [shrew.responses :as responses]
+            [shrew.settings :as settings]
             [secretary.core :refer-macros [defroute] :as secretary]
             [rum.core :as rum]))
 

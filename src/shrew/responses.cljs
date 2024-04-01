@@ -1,5 +1,5 @@
-(ns shrew-webapp.responses
-  (:require [shrew-webapp.request :as request]
+(ns shrew.responses
+  (:require [shrew.request :as request]
             [rum.core :refer [defc] :as rum]
             [reagent.cookies :as cookies]))
 

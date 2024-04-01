@@ -1,4 +1,4 @@
-(ns shrew-webapp.scout.info
+(ns shrew.scout.info
   (:require [rum.core :refer [defc] :as rum]))
 
 (def !team  (atom nil))

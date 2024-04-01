@@ -1,5 +1,5 @@
-(ns shrew-webapp.home
-  (:require [shrew-webapp.link :as link]
+(ns shrew.home
+  (:require [shrew.link :as link]
             [rum.core :as rum]))
 
 (rum/defc view []

@@ -1,5 +1,5 @@
-(ns shrew-webapp.scout.points
-  (:require [shrew-webapp.request :as request]
+(ns shrew.scout.points
+  (:require [shrew.request :as request]
             [rum.core :refer [defc] :as rum]
             [reagent.cookies :as cookies]
             [reagent.format :refer [format]]

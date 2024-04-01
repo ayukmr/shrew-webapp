@@ -1,4 +1,4 @@
-(defproject shrew-webapp "0.1.0"
+(defproject shrew "0.1.0"
   :dependencies [[org.clojure/clojure "1.11.1"]
                  [org.clojure/clojurescript "1.11.132"]
                  [clj-commons/secretary "1.2.4"]

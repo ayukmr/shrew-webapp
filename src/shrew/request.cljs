@@ -1,4 +1,4 @@
-(ns shrew-webapp.request
+(ns shrew.request
   (:require [reagent.cookies :as cookies]
             [cljs-http.client :as http]
             [cljs.core.async :refer [<!]])

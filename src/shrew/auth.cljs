@@ -1,5 +1,5 @@
-(ns shrew-webapp.auth
-  (:require [shrew-webapp.link :as link]
+(ns shrew.auth
+  (:require [shrew.link :as link]
             [rum.core :refer [defc] :as rum]
             [reagent.cookies :as cookies]))
 
