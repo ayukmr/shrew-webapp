@@ -28,7 +28,7 @@
                       "Continue")])
 
 (defc back-button < rum/reactive []
-  (when (not= (rum/react !page) 0)
+  (when-not (= (rum/react !page) 0)
              [:button#continue {:on-click #(swap! !page dec)} "Back"]))
 
 (defc view < rum/reactive []
