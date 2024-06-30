@@ -36,7 +36,7 @@
                                  :type "text"
                                  :defaultValue (-> (rum/react !settings)
                                                    (get :event))}]
-                        [:label {:for "Post-game responsespoints"} "Point Types"]
+                        [:label {:for "points"} "Point Types"]
                         [:input {:id   "points"
                                  :name "points"
                                  :type "text"
