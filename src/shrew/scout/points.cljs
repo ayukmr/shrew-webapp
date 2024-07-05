@@ -2,8 +2,7 @@
   (:require [shrew.request :as request]
             [rum.core :refer [defc] :as rum]
             [reagent.cookies :as cookies]
-            [reagent.format :refer [format]]
-            [clojure.string :as string]))
+            [reagent.format :refer [format]]))
 
 (def !times  (atom {:move 0 :intake 0 :outtake 0}))
 (def !points (atom []))
@@ -45,7 +44,7 @@
            [:button {:on-pointer-down #(hold-interval id)} title]])
 
 (defc point-button [point]
-  [:button {:on-click #(score-point point)} (string/capitalize point)])
+  [:button {:on-click #(score-point point)} point])
 
 (defc view < rum/reactive [!settings !team !match]
   [:#points [:.buttons (hold-button "In"   :intake)
