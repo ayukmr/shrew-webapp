@@ -11,8 +11,9 @@
 (def !interval-id (atom nil))
 
 (js/addEventListener "pointerup"
-                     #(do (js/clearInterval @!interval-id)
-                          (reset! !interval-id nil)))
+                     #(do
+                        (js/clearInterval @!interval-id)
+                        (reset! !interval-id nil)))
 
 (defn hold-interval [id]
   (when (some? @!interval-id)
@@ -25,12 +26,14 @@
   (swap! !points conj (merge {:point id} @!times))
   (reset! !times {:move 0 :intake 0 :outtake 0}))
 
-(defn submit [!team !match]
+(defn submit [team match]
   (request/post "/points"
-                {:scouting @!team
-                 :match    @!match
+                {:scouting team
+                 :match    match
                  :points   @!points}
-                (cookies/get "scout")))
+                (or (cookies/get "scout") (cookies/get "admin")))
+  (reset! !times {:move 0 :intake 0 :outtake 0})
+  (reset! !points []))
 
 (defc hold-button-label < rum/reactive [id]
   [:span (format "%.1f"
@@ -42,7 +45,7 @@
            [:button {:on-pointer-down #(hold-interval id)} title]])
 
 (defc point-button [point]
-  [:button {:on-click #(score-point point)} point])
+  [:button {:on-click #(score-point point)} (string/capitalize point)])
 
 (defc view < rum/reactive [!settings !team !match]
   [:#points [:.buttons (hold-button "In"   :intake)

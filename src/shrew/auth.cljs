@@ -12,10 +12,11 @@
         scout (.-scout data)
         admin (.-admin data)]
     (if (and (seq team) (seq scout))
-      (do (cookies/set! "team"  team)
-          (cookies/set! "scout" scout)
-          (cookies/set! "admin" admin)
-          (.back js/history))
+      (do
+        (cookies/set! "team"  team)
+        (cookies/set! "scout" scout)
+        (cookies/set! "admin" admin)
+        (.back js/history))
       (js/alert "Input team number and scout password!"))))
 
 (defc view []
@@ -30,6 +31,6 @@
                         [:input {:value "Log In" :type "submit" :on-click submit}]]]])
 
 (defn require [type callback]
-  (if (seq (cookies/get type))
+  (if (some some? (map cookies/get type))
     (callback)
     (link/navigate "/auth")))

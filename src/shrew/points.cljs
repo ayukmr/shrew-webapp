@@ -5,10 +5,12 @@
 
 (def !points (atom []))
 
-(defc view < rum/reactive []
+(defn fetch []
   (request/get "/points"
                (cookies/get "admin")
-               #(reset! !points %))
+               #(reset! !points %)))
+
+(defc view < rum/reactive []
   [:<> [:header [:h1 "Points"]
                 [:p  "Points scored during games. Sorted by team number."]]
        (for [[team points] (->> (rum/react !points)

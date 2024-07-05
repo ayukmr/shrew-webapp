@@ -5,6 +5,7 @@
             [shrew.points :as points]
             [shrew.responses :as responses]
             [shrew.settings :as settings]
+            [shrew.questions :as questions]
             [secretary.core :refer-macros [defroute] :as secretary]
             [rum.core :as rum]))
 
@@ -20,20 +21,34 @@
   (render (auth/view)))
 
 (defroute "/scout" []
-  (->> #(render (scout/view))
-       (auth/require "scout")))
+  (->> #(do
+          (scout/fetch)
+          (render (scout/view)))
+       (auth/require ["scout" "admin"])))
 
 (defroute "/points" []
-  (->> #(render (points/view))
-       (auth/require "admin")))
+  (->> #(do
+          (points/fetch)
+          (render (points/view)))
+       (auth/require ["admin"])))
 
 (defroute "/responses" []
-  (->> #(render (responses/view))
-       (auth/require "admin")))
+  (->> #(do
+          (responses/fetch)
+          (render (responses/view)))
+       (auth/require ["admin"])))
 
 (defroute "/settings" []
-  (->> #(render (settings/view))
-       (auth/require "admin")))
+  (->> #(do
+          (settings/fetch)
+          (render (settings/view)))
+       (auth/require ["admin"])))
+
+(defroute "/questions" []
+  (->> #(do
+          (questions/fetch)
+          (render (questions/view)))
+       (auth/require ["admin"])))
 
 (js/addEventListener "popstate"
                      #(secretary/dispatch! (.-pathname js/location)))

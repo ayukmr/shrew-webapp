@@ -8,6 +8,7 @@
 
 (defc view [path & children]
   [:a {:href path
-       :on-click #(do (.preventDefault %)
-                      (navigate path))}
+       :on-click #(do
+                    (.preventDefault %)
+                    (navigate path))}
       children])

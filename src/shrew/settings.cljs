@@ -7,28 +7,28 @@
 
 (def !settings (atom {}))
 
+(defn fetch []
+  (request/get "/settings"
+               (cookies/get "admin")
+               #(reset! !settings %)))
+
 (defn submit [event]
   (.preventDefault event)
   (let [data (->> (.getElementById js/document "form")
                   (js/FormData.)
                   (.fromEntries js/Object))
-        event     (.-event     data)
-        points    (.-points    data)
-        questions (.-questions data)]
+        event  (.-event  data)
+        points (.-points data)]
     (request/post "/settings"
-                  {:event     event
-                   :points    (string/split points ",")
-                   :questions (string/split questions ",")}
+                  {:event  event
+                   :points (string/split points ",")}
                   (cookies/get "admin"))
     (link/navigate "/")))
 
 (defc view < rum/reactive []
-  (request/get "/settings"
-               (cookies/get "scout")
-               #(reset! !settings %))
   [:<> [:header [[:h1 "Settings"]
                  [:p  "Global settings for Shrew.
-                       Point types and questions are lists separated by commas."]]]
+                       Point types is a list separated by commas."]]]
        [:section [:form {:id "form"}
                         [:label {:for "event"} "Event Name"]
                         [:input {:id   "event"
@@ -42,12 +42,5 @@
                                  :type "text"
                                  :defaultValue (->> (rum/react !settings)
                                                     (:points)
-                                                    (string/join ","))}]
-                        [:label {:for "questions"} "Questions"]
-                        [:input {:id   "questions"
-                                 :name "questions"
-                                 :type "text"
-                                 :defaultValue (->> (rum/react !settings)
-                                                    (:questions)
                                                     (string/join ","))}]
                         [:input {:value "Save" :type "submit" :on-click submit}]]]])
